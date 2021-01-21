@@ -2,9 +2,6 @@ name: CI
 
 on: [push]
 
-strategy:
-  matrix:
-    compiler: [g++]
 jobs:
   build:
 
@@ -13,12 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      env:
-        CC: ${{ matrix.compiler }}
-      run: CC main.cpp
+      run: g++ main.cpp
 
     - name: Test
-      env:
-        CC: ${{ matrix.compiler }}
       run: ./a.out
 
