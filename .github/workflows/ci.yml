@@ -20,5 +20,6 @@ jobs:
 
     - name: Docker push
       run: |
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u USERNAME --password-stdin
         docker tag too-simple-hol ghcr.io/wnaldj1589tw/github_action_test/too-simple-hol:latest
         docker push ghcr.io/wnaldj1589tw/github_action_test/too-simple-hol:latest
