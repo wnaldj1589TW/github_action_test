@@ -15,11 +15,17 @@ jobs:
     - name: Test
       run: ./a.out
 
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+      username: ${{ github.repository_owner }}
+      password: ${{ secrets.CR_PAT }}
+
     - name: Docker build
       run: docker build -t too-simple-hol .
 
     - name: Docker push
       run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u USERNAME --password-stdin
         docker tag too-simple-hol ghcr.io/wnaldj1589tw/github_action_test/too-simple-hol:latest
         docker push ghcr.io/wnaldj1589tw/github_action_test/too-simple-hol:latest
