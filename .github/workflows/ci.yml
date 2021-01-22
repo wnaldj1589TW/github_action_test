@@ -23,9 +23,9 @@ jobs:
         password: ${{ secrets.CR_PAT }}
 
     - name: Docker build
-      run: docker build -t too-simple-hol .
+      run: docker build -t github_action_test:latest .
 
     - name: Docker push
       run: |
-        docker tag too-simple-hol ghcr.io/${{ github.repository }}/too-simple-hol:latest
-        docker push ghcr.io/${{ github.repository }}/too-simple-hol:latest
+        docker tag github_action_test:latest ghcr.io/wnaldj1589tw/github_action_test:latest
+        docker push ghcr.io/wnaldj1589tw/github_action_test:latest
