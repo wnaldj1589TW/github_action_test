@@ -1,0 +1,14 @@
+name: Clear
+
+on: delete
+
+jobs:
+  clear:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: print origin branch name
+        run: |
+          echo "${{ github.event.ref }} - ${{ github.event.ref_type }}"
