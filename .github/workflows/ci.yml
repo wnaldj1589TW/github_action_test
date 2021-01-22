@@ -27,5 +27,5 @@ jobs:
 
     - name: Docker push
       run: |
-        docker tag too-simple-hol ghcr.io/wnaldj1589tw/too-simple-hol:latest
-        docker push ghcr.io/wnaldj1589tw/too-simple-hol:latest
+        docker tag too-simple-hol ghcr.io/wnaldj1589TW/too-simple-hol:latest
+        docker push ghcr.io/wnaldj1589TW/too-simple-hol:latest
