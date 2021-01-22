@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  ci:
 
     runs-on: ubuntu-latest
 
@@ -15,3 +15,5 @@ jobs:
     - name: Test
       run: ./a.out
 
+    - name: Docker build
+      run: docker build --tag too-simple-hol .
