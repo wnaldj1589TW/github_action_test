@@ -16,4 +16,7 @@ jobs:
       run: ./a.out
 
     - name: Docker build
-      run: docker build --tag too-simple-hol .
+      run: docker build --tag ghcr.io/wnaldj1589TW/github_action_test/too-simple-hol:latest .
+
+    - name: Docker push
+      run: docker push ghcr.io/wnaldj1589TW/github_action_test/too-simple-hol:latest .
