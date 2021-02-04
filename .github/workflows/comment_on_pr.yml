@@ -1,0 +1,19 @@
+name: Comment on PR
+
+on: [pull_request]
+
+jobs:
+  comment:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@master
+        with:
+          message: 'Example of message'
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+
