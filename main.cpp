@@ -1,5 +1,6 @@
 #include <cassert>
 
+// anything
 int AlwaysSuccees()
 {
     return 1;
