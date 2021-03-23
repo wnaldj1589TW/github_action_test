@@ -9,23 +9,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build
-      run: g++ main.cpp
 
-    - name: Test
-      run: ./a.out
-
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.CR_PAT }}
-
-    - name: Docker build
-      run: docker build -t github_action_test:latest .
-
-    - name: Docker push
+    - name: Get the branch
+      id: get-branch
       run: |
-        docker tag github_action_test:latest ghcr.io/wnaldj1589tw/github_action_test:latest
-        docker push ghcr.io/wnaldj1589tw/github_action_test:latest
+          if [[ ${GITHUB_REF#refs/heads/} == 'master' ]]
+          then
+              _branch='master'
+          else
+              if [[ ${GITHUB_REF#refs/heads/} == 'develop' ]]
+              then
+                  _branch='develop'
+              else
+                  _branch=$(echo ${GITHUB_REF#refs/heads/} | cut -d'/' -f2)
+              fi
+          fi
+          echo ::set-output name=branch::${_branch,,}
+
+    - name: Print branch name
+      run: echo ${{ steps.get-branch.outputs.branch }}
