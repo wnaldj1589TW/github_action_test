@@ -2,6 +2,7 @@
 
 // anything
 // anything
+// anything
 int AlwaysSuccees()
 {
     return 1;
